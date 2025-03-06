@@ -1,4 +1,4 @@
-FROM golang:1.24 AS build
+FROM golang:1.24-alpine AS build
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ COPY . .
 
 RUN CGO_ENABLED=0 GOOS=linux  go build -o ./scan ./cmd
 
-FROM golang:1.24 AS release
+FROM golang:1.24-alpine AS release
 
 WORKDIR /
 
