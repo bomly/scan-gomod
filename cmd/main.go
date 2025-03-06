@@ -22,14 +22,14 @@ type Module struct {
 }
 
 type ScanResult struct {
-	Version           string `json:"version"`
-	Module            Module `json:"module"`
-	DependencyManager string `json:"dependencyManager"`
+	Version       string `json:"version"`
+	Module        Module `json:"module"`
+	PackageSystem string `json:"packageSystem"`
 }
 
 var scanResult = ScanResult{
-	Version:           "1.0.0",
-	DependencyManager: "gomod",
+	Version:       "1.0.0",
+	PackageSystem: "gomod",
 	Module: Module{
 		Name:    "github.com/kyuff/es",
 		Version: "git sha",
