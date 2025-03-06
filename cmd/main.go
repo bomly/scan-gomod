@@ -45,11 +45,11 @@ var scanResult = ScanResult{
 }
 
 var (
-	outputFile = "scan-result.gomod.json"
+	output = ""
 )
 
 func init() {
-	flag.StringVar(&outputFile, "o", outputFile, "Output file to write dependencies to")
+	flag.StringVar(&output, "o", output, "Output file to write dependencies to")
 }
 
 func main() {
@@ -62,15 +62,20 @@ func main() {
 
 	err := enc.Encode(scanResult)
 	if err != nil {
-		fmt.Printf("Failed to encode dependencies to %s: %v\n", outputFile, err)
+		fmt.Printf("Failed to encode dependencies to %s: %v\n", output, err)
 		os.Exit(1)
 	}
 
-	err = os.WriteFile(outputFile, buf.Bytes(), 0644)
+	if output == "" {
+		fmt.Println(buf.String())
+		os.Exit(0)
+	}
+
+	err = os.WriteFile(output, buf.Bytes(), 0644)
 	if err != nil {
-		fmt.Printf("Failed to write file to %s: %v\n", outputFile, err)
+		fmt.Printf("Failed to write file to %s: %v\n", output, err)
 		os.Exit(1)
 	}
 
-	fmt.Printf("Output: %s\n", outputFile)
+	fmt.Printf("Output: %s\n", output)
 }
