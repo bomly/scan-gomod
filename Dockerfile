@@ -14,5 +14,6 @@ FROM golang:1.24-alpine AS release
 WORKDIR /
 
 COPY --from=build /app/scan .
+COPY --from=build /app/bin/scan.sh .
 
-ENTRYPOINT ["/scan"]
+ENTRYPOINT ["/scan.sh"]
