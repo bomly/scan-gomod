@@ -15,31 +15,37 @@ type Dependency struct {
 	Type    string `json:"type"`
 }
 
+type Module struct {
+	Name         string       `json:"name"`
+	Version      string       `json:"version"`
+	Dependencies []Dependency `json:"dependencies"`
+}
+
 type ScanResult struct {
-	Version           string       `json:"version"`
-	Module            string       `json:"module"`
-	ModuleVersion     string       `json:"moduleVersion"`
-	DependencyManager string       `json:"dependencyManager"`
-	Dependencies      []Dependency `json:"dependencies"`
+	Version           string `json:"version"`
+	Module            Module `json:"module"`
+	DependencyManager string `json:"dependencyManager"`
 }
 
 var scanResult = ScanResult{
 	Version:           "1.0.0",
-	Module:            "github.com/kyuff/es",
-	ModuleVersion:     "git sha",
 	DependencyManager: "gomod",
-	Dependencies: []Dependency{
-		{
-			Module:  "github.com/gofrs/uuid/v5",
-			Version: "v5.3.1",
-			Scope:   "code",
-			Type:    "gomod",
-		},
-		{
-			Module:  "golang.org/x/sync",
-			Version: "v0.11.0",
-			Scope:   "code",
-			Type:    "gomod",
+	Module: Module{
+		Name:    "github.com/kyuff/es",
+		Version: "git sha",
+		Dependencies: []Dependency{
+			{
+				Module:  "github.com/gofrs/uuid/v5",
+				Version: "v5.3.1",
+				Scope:   "code",
+				Type:    "gomod",
+			},
+			{
+				Module:  "golang.org/x/sync",
+				Version: "v0.11.0",
+				Scope:   "code",
+				Type:    "gomod",
+			},
 		},
 	},
 }
