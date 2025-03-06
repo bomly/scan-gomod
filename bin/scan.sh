@@ -6,3 +6,5 @@ env
 echo "Content of GITHUB_ENV"
 cat $GITHUB_ENV
 echo
+echo "Running scan..."
+/scan
