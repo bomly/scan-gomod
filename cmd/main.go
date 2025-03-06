@@ -16,18 +16,18 @@ type Dependency struct {
 }
 
 type ScanResult struct {
-	Version        string       `json:"version"`
-	Module         string       `json:"module"`
-	ModuleVersion  string       `json:"moduleVersion"`
-	PackageManager string       `json:"packageManager"`
-	Dependencies   []Dependency `json:"dependencies"`
+	Version           string       `json:"version"`
+	Module            string       `json:"module"`
+	ModuleVersion     string       `json:"moduleVersion"`
+	DependencyManager string       `json:"dependencyManager"`
+	Dependencies      []Dependency `json:"dependencies"`
 }
 
 var scanResult = ScanResult{
-	Version:        "1.0.0",
-	Module:         "github.com/kyuff/es",
-	ModuleVersion:  "git sha",
-	PackageManager: "gomod",
+	Version:           "1.0.0",
+	Module:            "github.com/kyuff/es",
+	ModuleVersion:     "git sha",
+	DependencyManager: "gomod",
 	Dependencies: []Dependency{
 		{
 			Module:  "github.com/gofrs/uuid/v5",
