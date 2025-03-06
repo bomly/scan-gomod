@@ -12,5 +12,5 @@ echo "Content of GITHUB_OUTPUT"
 cat $GITHUB_OUTPUT
 echo "---------------------------------"
 echo "Displaying result..."
-echo $result | base64 --decode
+echo $result | base64 -d
 echo "---------------------------------"
