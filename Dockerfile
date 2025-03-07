@@ -11,8 +11,6 @@ RUN CGO_ENABLED=0 GOOS=linux  go build -o ./scan ./cmd
 
 FROM golang:1.24-alpine AS release
 
-WORKDIR /
-
 COPY --from=build /app/scan .
 COPY --from=build /app/bin/scan.sh .
 
